@@ -2,6 +2,7 @@
     "db": {
     "host"     : "localhost",
     "user"     : "root",
-    "database" : "discord"
+    "database" : "discord",
+    "password" : "kgodiscordbot"
 }
 }
