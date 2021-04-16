@@ -6,15 +6,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Alen_Alex",
   "license": "ISC",
   "dependencies": {
     "array-contains": "0.0.1",
+    "better-pastebin": "^0.4.1",
+    "canvas": "^2.6.1",
     "discord.js": "^12.5.1",
     "edit-json-file": "^1.5.0",
+    "in-array": "^0.1.2",
     "minecraft-server-util": "^3.4.2",
     "mysql": "^2.18.1",
-    "performance-now": "^2.1.0",
-    "replaceall": "^0.1.6"
+    "performance-now": "^2.1.0"
   }
 }

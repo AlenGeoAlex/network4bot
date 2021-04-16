@@ -14,7 +14,7 @@ module.exports = {
         let file = editJsonFile(`${Data}`, {
             autosave: true
         });
-        if(message.member.roles.cache.find(r => r.id === roles.admin) || message.member.roles.cache.find(r => r.id === roles.superadmin) || message.member.roles.cache.find(r => r.id === roles.official)){
+        if(message.member.roles.cache.find(r => r.id === roles.admin) || message.member.roles.cache.find(r => r.id === roles.superadmin) || message.member.roles.cache.find(r => r.id === roles.official)||message.member.roles.cache.find(r => r.id === roles.mod)){
             if(!args[0]){
                 const imCoUsageEmbed = new discord.MessageEmbed()
                 .setColor('RANDOM')

@@ -32,11 +32,15 @@ module.exports = async(client) => {
                 }else{
                     client.channels.cache.get(channel.vcskyblock).setName('🔴║ ꜱᴋʏʙʟᴏᴄᴋ')
                 }
-
                 if(result[4] == true ){
-                    client.channels.cache.get(channel.vcbedwars).setName('🟢║ ᴀʀᴄᴀᴅᴇ')
+                    client.channels.cache.get(channel.vckitpvp).setName('🟢║ ᴋɪᴛᴘᴠᴘ')
                 }else{
-                    client.channels.cache.get(channel.bedwars).setName('🔴║ ᴀʀᴄᴀᴅᴇ') 
+                    client.channels.cache.get(channel.vckitpvp).setName('🔴║ ᴋɪᴛᴘᴠᴘ') 
+                }
+                if(result[5] == true ){
+                    client.channels.cache.get(channel.vcbedwars).setName('🟢║ ʙᴇᴅᴡᴀʀꜱ')
+                }else{
+                    client.channels.cache.get(channel.vcbedwars).setName('🔴║ ʙᴇᴅᴡᴀʀꜱ') 
                 }
             }
             

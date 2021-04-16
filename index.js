@@ -4,12 +4,15 @@ const { readdirSync } = require("fs");
 const { join } = require("path")
 const editJsonFile = require("edit-json-file");
 const wait = require('util').promisify(setTimeout);
+const channel = require('./Config/channel.json')
 //----------------------------------------------
 //##Readable Files
 const options = require('./Config/data.json');
 const Data = require('./Data/stickydata.json')
+const roles = require('./Config/roles.json');
 const PREFIX = options.prefix;
 const invites = {};
+
 let file = editJsonFile(`${Data}`, {
   autosave: true})
 //----------------------------------------------
@@ -25,15 +28,16 @@ client.on("ready", () => {
   })
 
 
-  client.on('message', message => {
+  client.on('message', message =>  {
+    //require('./Auto/noMention')(client,message)
     if (message.author.id == client.user.id) return;
     require('./Sticky/onMsg')(client,message)
+    if(message.channel.id == channel.txtchat || message.channel.id == channel.txtoffchat || message.channel.id == channel.txtadminsnote || message.channel.id == channel.txtmodchat)
+    require('./Auto/reactWord')(client,message)
   })
 
   client.on("voiceStateUpdate", (oldVoiceState, newVoiceState) => {
     if (newVoiceState.channel) {
-      console.log(newVoiceState)
-      console.log(`${newVoiceState.member.user.tag} connected to ${newVoiceState.channel.name}.`);
       require('./Support Voice/connected')(client, oldVoiceState, newVoiceState)
   }
   })

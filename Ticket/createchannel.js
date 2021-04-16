@@ -67,7 +67,7 @@ async function changePerm(client, data, permchn, guild){
 
 async function sendFirstMsg(client, data, chnid){
     const ticketchn = client.channels.cache.get(chnid);
-    ticketchn.send(`${data.username}, <@&${role.mod}>, <@&${role.admin}`).then(msg => {
+    ticketchn.send(`<@${data.id}>, <@&${role.mod}>, <@&${role.admin}>, <@&${role.support}>`).then(msg => {
         msg.delete({ timeout:1000 })
       }).catch(console.error);
     const firstMssg = new Discord.MessageEmbed()
@@ -161,6 +161,7 @@ async function sendFirstMsg(client, data, chnid){
          }
      }
     })
+    require("../Auto/SupportAutoBot")(client,chnid,data)
 }
 async function claimtkt(client, user, chnid, data)
 {
@@ -191,12 +192,14 @@ async function unclaimtkt(client, user, chnid, data)
 }
 async function closeticket(client, user, chnid, data)
 {   
+
     const ticketchn = client.channels.cache.get(chnid);
     const closeEmbed = new Discord.MessageEmbed()
     .setTitle('**__ALERT__**')
     .setColor('RANDOM')
-    .setDescription('**This ticket will be closed in 5 Mins..**\n\n*If you feel that your concern is not solved react below*')
+    .setDescription('**This ticket will be closed in 30 Sec..**\n\n*If you feel that your concern is not solved react below*')
     .setTimestamp()
+    require('../Ticket/transcript')(client,chnid)
     ticketchn.send(closeEmbed).then(tMessage =>{
         tMessage.react('⭕')
     })
@@ -206,6 +209,7 @@ async function closeticket(client, user, chnid, data)
        if (user.bot) return;
   
        if (reaction.emoji.name === "⭕") {
+
           if (user.bot) return;
           let aplyemojireaction1 = user.id;
           let aplyemojiremove1 =await reaction.message.guild.members.cache.get(user.id)
@@ -221,7 +225,7 @@ async function closeticket(client, user, chnid, data)
         db(`DELETE FROM channel WHERE ChnId = ${chnid}`, function (err, result, fields) {
             if (err) throw err;
             });
-    }, 300*1000);    
+    }, 30*1000);    
 }
 
 

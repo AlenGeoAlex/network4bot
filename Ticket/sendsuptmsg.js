@@ -13,6 +13,7 @@ module.exports = async(client) => {
 
   })
   client.on("messageReactionAdd", async (reaction, user) => {
+    if (user.partial) await user.fetch();
     if (reaction.message.partial) await reaction.message.fetch(); 
      if (reaction.partial) await reaction.fetch();
      if (user.bot) return;
